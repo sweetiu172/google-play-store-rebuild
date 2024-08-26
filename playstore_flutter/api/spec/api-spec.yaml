@@ -1,0 +1,202 @@
+openapi: 3.0.0
+info:
+  title: Sample API
+  version: 1.0.0
+  description: A sample API for a Flutter application
+
+paths:
+  /auth/login:
+    post:
+      summary: User login
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LoginRequest"
+      responses:
+        "200":
+          description: Successful login
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LoginResponse"
+        "401":
+          description: Unauthorized
+      tags:
+        - auth
+  /users:
+    get:
+      summary: Get all users
+      parameters:
+        - in: query
+          name: page
+          schema:
+            type: integer
+          description: Page number for pagination
+        - in: query
+          name: limit
+          schema:
+            type: integer
+          description: Number of items per page
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserList"
+      tags:
+        - users
+    post:
+      summary: Create a new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateUserRequest"
+      responses:
+        "201":
+          description: User created successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+      tags:
+        - users
+  /users/{userId}:
+    get:
+      summary: Get user by ID
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        "404":
+          description: User not found
+      tags:
+        - users
+    put:
+      summary: Update user
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateUserRequest"
+      responses:
+        "200":
+          description: User updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        "404":
+          description: User not found
+      tags:
+        - users
+    delete:
+      summary: Delete user
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: string
+      responses:
+        "204":
+          description: User deleted successfully
+        "404":
+          description: User not found
+      tags:
+        - users
+components:
+  schemas:
+    LoginRequest:
+      type: object
+      required:
+        - username
+        - password
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+
+    LoginResponse:
+      type: object
+      properties:
+        token:
+          type: string
+        user:
+          $ref: "#/components/schemas/User"
+
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+        username:
+          type: string
+        email:
+          type: string
+        fullName:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+
+    UserList:
+      type: object
+      properties:
+        users:
+          type: array
+          items:
+            $ref: "#/components/schemas/User"
+        totalCount:
+          type: integer
+        page:
+          type: integer
+        limit:
+          type: integer
+
+    CreateUserRequest:
+      type: object
+      required:
+        - username
+        - email
+        - password
+      properties:
+        username:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+        fullName:
+          type: string
+
+    UpdateUserRequest:
+      type: object
+      properties:
+        email:
+          type: string
+        fullName:
+          type: string
+        password:
+          type: string
