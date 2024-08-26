@@ -4,7 +4,7 @@
 			"path": "."
 		},
 		{
-			"path": "playstore_flutter"
+			"path": "flutter"
 		}
 	],
 	"settings": {}

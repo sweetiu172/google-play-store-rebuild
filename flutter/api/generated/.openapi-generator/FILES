@@ -29,11 +29,3 @@ lib/model/update_user_request.dart
 lib/model/user.dart
 lib/model/user_list.dart
 pubspec.yaml
-test/auth_api_test.dart
-test/create_user_request_test.dart
-test/login_request_test.dart
-test/login_response_test.dart
-test/update_user_request_test.dart
-test/user_list_test.dart
-test/user_test.dart
-test/users_api_test.dart

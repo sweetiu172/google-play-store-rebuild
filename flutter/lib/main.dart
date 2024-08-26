@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+// ignore: unused_import
+import 'package:openapi/api.dart';
 
 void main() {
   runApp(const MyApp());
