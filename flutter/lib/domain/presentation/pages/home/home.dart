@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -22,10 +24,12 @@ class PlayStoreHomePage extends StatelessWidget {
     {'name': 'Messenger', 'description': 'Liên lạc', 'rating': 3.3},
   ];
 
+  PlayStoreHomePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      key: Key('home'),
+      key: const Key('home'),
       home: SafeArea(
         child: Column(
           children: [
@@ -50,20 +54,20 @@ class PlayStoreHomePage extends StatelessWidget {
             children: [
               Image.network('https://placehold.co/32.png',
                   width: 32, height: 32),
-              SizedBox(width: 8),
-              Text('Google Play',
+              const SizedBox(width: 8),
+              const Text('Google Play',
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600)),
             ],
           ),
           Row(
             children: [
               Icon(Icons.search, size: 24, color: Colors.grey[600]),
-              SizedBox(width: 16),
+              const SizedBox(width: 16),
               Icon(Icons.help_outline, size: 24, color: Colors.grey[600]),
-              SizedBox(width: 16),
+              const SizedBox(width: 16),
               CircleAvatar(
                 backgroundColor: Colors.purple[600],
-                child: Text('C', style: TextStyle(color: Colors.white)),
+                child: const Text('C', style: TextStyle(color: Colors.white)),
               ),
             ],
           ),
@@ -74,7 +78,7 @@ class PlayStoreHomePage extends StatelessWidget {
 
   Widget _buildNavigation() {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 16),
+      padding: const EdgeInsets.symmetric(vertical: 16),
       decoration: BoxDecoration(
         border: Border(bottom: BorderSide(color: Colors.grey[300]!)),
       ),
@@ -97,28 +101,28 @@ class PlayStoreHomePage extends StatelessWidget {
 
   Widget _buildDeviceTypes() {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 16),
+      padding: const EdgeInsets.symmetric(vertical: 16),
       color: Colors.grey[100],
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Row(
           children: [
-            SizedBox(width: 16),
+            const SizedBox(width: 16),
             ElevatedButton(
               onPressed: () {},
-              child: Text('Điện thoại'),
               style: ElevatedButton.styleFrom(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20)),
               ),
+              child: const Text('Điện thoại'),
             ),
-            SizedBox(width: 8),
+            const SizedBox(width: 8),
             _buildDeviceButton('Máy tính bảng'),
             _buildDeviceButton('Ti vi'),
             _buildDeviceButton('Chromebook'),
             _buildDeviceButton('Đồng hồ'),
             _buildDeviceButton('Xe ô tô'),
-            SizedBox(width: 16),
+            const SizedBox(width: 16),
           ],
         ),
       ),
@@ -138,7 +142,7 @@ class PlayStoreHomePage extends StatelessWidget {
 
   Widget _buildFeaturedApp() {
     return Container(
-      padding: EdgeInsets.all(24),
+      padding: const EdgeInsets.all(24),
       color: Colors.black,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -147,23 +151,23 @@ class PlayStoreHomePage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Kết thúc sau 6 ngày nữa',
+                const Text('Kết thúc sau 6 ngày nữa',
                     style: TextStyle(color: Colors.white, fontSize: 12)),
-                SizedBox(height: 8),
-                Text(
+                const SizedBox(height: 8),
+                const Text(
                   'Supernova X: Vòng 3 đang diễn ra',
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 24,
                       fontWeight: FontWeight.bold),
                 ),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 Row(
                   children: [
                     Image.network('https://placehold.co/24.png',
                         width: 24, height: 24),
-                    SizedBox(width: 8),
-                    Text('StarMaker: hát ứng dụng karaoke',
+                    const SizedBox(width: 8),
+                    const Text('StarMaker: hát ứng dụng karaoke',
                         style: TextStyle(color: Colors.white, fontSize: 12)),
                   ],
                 ),
@@ -184,12 +188,12 @@ class PlayStoreHomePage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Bảng xếp hạng hàng đầu',
+            const Text('Bảng xếp hạng hàng đầu',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600)),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             Expanded(
               child: GridView.builder(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                   childAspectRatio: 3,
                   crossAxisSpacing: 16,
@@ -201,26 +205,27 @@ class PlayStoreHomePage extends StatelessWidget {
                   return Row(
                     children: [
                       Text('${index + 1}',
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 18, fontWeight: FontWeight.w600)),
-                      SizedBox(width: 12),
+                      const SizedBox(width: 12),
                       Image.network('https://placehold.co/48.png',
                           width: 48, height: 48),
-                      SizedBox(width: 12),
+                      const SizedBox(width: 12),
                       Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(app['name'],
-                                style: TextStyle(fontWeight: FontWeight.w500)),
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.w500)),
                             Text(app['description'],
                                 style: TextStyle(
                                     fontSize: 12, color: Colors.grey[600])),
                             Row(
                               children: [
                                 Text(app['rating'].toString(),
-                                    style: TextStyle(fontSize: 12)),
+                                    style: const TextStyle(fontSize: 12)),
                                 Icon(Icons.star,
                                     size: 12, color: Colors.yellow[700]),
                               ],
