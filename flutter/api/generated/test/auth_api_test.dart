@@ -11,7 +11,6 @@
 import 'package:openapi/api.dart';
 import 'package:test/test.dart';
 
-
 /// tests for AuthApi
 void main() {
   // final instance = AuthApi();
@@ -23,6 +22,5 @@ void main() {
     test('test authLoginPost', () async {
       // TODO
     });
-
   });
 }

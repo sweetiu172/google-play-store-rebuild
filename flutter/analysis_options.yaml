@@ -13,7 +13,8 @@ linter:
   # The lint rules applied to this project can be customized in the
   # section below to disable rules from the `package:flutter_lints/flutter.yaml`
   # included above or to enable additional rules. A list of all available lints
-  # and their documentation is published at https://dart.dev/lints.
+  # and their documentation is published at
+  # https://dart-lang.github.io/linter/lints/index.html.
   #
   # Instead of disabling a lint rule for the entire project in the
   # section below, it can also be suppressed for a single line of code
@@ -23,6 +24,31 @@ linter:
   rules:
     # avoid_print: false  # Uncomment to disable the `avoid_print` rule
     # prefer_single_quotes: true  # Uncomment to enable the `prefer_single_quotes` rule
+    prefer_single_quotes: true
+    require_trailing_commas: true
+    no_duplicate_case_values: true
+    curly_braces_in_flow_control_structures: true
+    sized_box_for_whitespace: true
+    sized_box_shrink_expand: true
+    sort_child_properties_last: true
+    sort_constructors_first: true
+    unnecessary_lambdas: true
+    unnecessary_null_checks: true
+    unnecessary_raw_strings: true
+    use_decorated_box: true
+    use_named_constants: true
+    unnecessary_this: false
+    constant_identifier_names: false
+    depend_on_referenced_packages: false
+    hash_and_equals: false
+    type_literal_in_constant_pattern: false
 
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options
+
+analyzer:
+  exclude: [api/**, test/**, lib/**.g.dart]
+  language:
+    strict-casts: true
+    strict-inference: true
+    strict-raw-types: true

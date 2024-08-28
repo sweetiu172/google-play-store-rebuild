@@ -17,14 +17,13 @@ class MyApp extends StatelessWidget {
 }
 
 class PlayStoreHomePage extends StatelessWidget {
+  PlayStoreHomePage({super.key});
   final List<Map<String, dynamic>> topApps = [
     {'name': 'TikTok', 'description': 'Xem và sửa video', 'rating': 3.8},
     {'name': 'Shopee', 'description': 'Mua sắm', 'rating': 4.0},
     {'name': 'Zalo', 'description': 'Liên lạc', 'rating': 4.0},
     {'name': 'Messenger', 'description': 'Liên lạc', 'rating': 3.3},
   ];
-
-  PlayStoreHomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -52,11 +51,16 @@ class PlayStoreHomePage extends StatelessWidget {
         children: [
           Row(
             children: [
-              Image.network('https://placehold.co/32.png',
-                  width: 32, height: 32),
+              Image.network(
+                'https://placehold.co/32.png',
+                width: 32,
+                height: 32,
+              ),
               const SizedBox(width: 8),
-              const Text('Google Play',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600)),
+              const Text(
+                'Google Play',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+              ),
             ],
           ),
           Row(
@@ -85,12 +89,20 @@ class PlayStoreHomePage extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Text('Trò chơi',
-              style: TextStyle(
-                  color: Colors.green[600], fontWeight: FontWeight.w500)),
-          Text('Ứng dụng',
-              style: TextStyle(
-                  color: Colors.green[600], fontWeight: FontWeight.w500)),
+          Text(
+            'Trò chơi',
+            style: TextStyle(
+              color: Colors.green[600],
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+          Text(
+            'Ứng dụng',
+            style: TextStyle(
+              color: Colors.green[600],
+              fontWeight: FontWeight.w500,
+            ),
+          ),
           Text('Phim', style: TextStyle(color: Colors.grey[600])),
           Text('Sách', style: TextStyle(color: Colors.grey[600])),
           Text('Trẻ em', style: TextStyle(color: Colors.grey[600])),
@@ -112,7 +124,8 @@ class PlayStoreHomePage extends StatelessWidget {
               onPressed: () {},
               style: ElevatedButton.styleFrom(
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20)),
+                  borderRadius: BorderRadius.circular(20),
+                ),
               ),
               child: const Text('Điện thoại'),
             ),
@@ -151,31 +164,42 @@ class PlayStoreHomePage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text('Kết thúc sau 6 ngày nữa',
-                    style: TextStyle(color: Colors.white, fontSize: 12)),
+                const Text(
+                  'Kết thúc sau 6 ngày nữa',
+                  style: TextStyle(color: Colors.white, fontSize: 12),
+                ),
                 const SizedBox(height: 8),
                 const Text(
                   'Supernova X: Vòng 3 đang diễn ra',
                   style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold),
+                    color: Colors.white,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 const SizedBox(height: 8),
                 Row(
                   children: [
-                    Image.network('https://placehold.co/24.png',
-                        width: 24, height: 24),
+                    Image.network(
+                      'https://placehold.co/24.png',
+                      width: 24,
+                      height: 24,
+                    ),
                     const SizedBox(width: 8),
-                    const Text('StarMaker: hát ứng dụng karaoke',
-                        style: TextStyle(color: Colors.white, fontSize: 12)),
+                    const Text(
+                      'StarMaker: hát ứng dụng karaoke',
+                      style: TextStyle(color: Colors.white, fontSize: 12),
+                    ),
                   ],
                 ),
               ],
             ),
           ),
-          Image.network('https://placehold.co/200.png',
-              width: 150, height: 150),
+          Image.network(
+            'https://placehold.co/200.png',
+            width: 150,
+            height: 150,
+          ),
         ],
       ),
     );
@@ -188,8 +212,10 @@ class PlayStoreHomePage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text('Bảng xếp hạng hàng đầu',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600)),
+            const Text(
+              'Bảng xếp hạng hàng đầu',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+            ),
             const SizedBox(height: 16),
             Expanded(
               child: GridView.builder(
@@ -204,30 +230,49 @@ class PlayStoreHomePage extends StatelessWidget {
                   final app = topApps[index];
                   return Row(
                     children: [
-                      Text('${index + 1}',
-                          style: const TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.w600)),
+                      Text(
+                        '${index + 1}',
+                        style: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
                       const SizedBox(width: 12),
-                      Image.network('https://placehold.co/48.png',
-                          width: 48, height: 48),
+                      Image.network(
+                        'https://placehold.co/48.png',
+                        width: 48,
+                        height: 48,
+                      ),
                       const SizedBox(width: 12),
                       Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(app['name'],
-                                style: const TextStyle(
-                                    fontWeight: FontWeight.w500)),
-                            Text(app['description'],
-                                style: TextStyle(
-                                    fontSize: 12, color: Colors.grey[600])),
+                            const Text(
+                              'name',
+                              style: TextStyle(
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                            Text(
+                              'description',
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: Colors.grey[600],
+                              ),
+                            ),
                             Row(
                               children: [
-                                Text(app['rating'].toString(),
-                                    style: const TextStyle(fontSize: 12)),
-                                Icon(Icons.star,
-                                    size: 12, color: Colors.yellow[700]),
+                                Text(
+                                  app['rating'].toString(),
+                                  style: const TextStyle(fontSize: 12),
+                                ),
+                                Icon(
+                                  Icons.star,
+                                  size: 12,
+                                  color: Colors.yellow[700],
+                                ),
                               ],
                             ),
                           ],
