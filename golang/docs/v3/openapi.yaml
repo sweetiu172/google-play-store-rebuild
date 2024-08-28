@@ -1,0 +1,19 @@
+openapi: 3.0.1
+info:
+  contact: {}
+  description: This is a sample server celler server.
+  termsOfService: http://swagger.io/terms/
+  title: Swagger Example API
+  version: "1.0"
+servers:
+- url: //localhost:8080/api/v1
+paths: {}
+components:
+  schemas: {}
+  securitySchemes:
+    Bearer:
+      description: Type "Bearer" followed by a space and JWT token.
+      in: header
+      name: Authorization
+      type: apiKey
+x-original-swagger-version: "2.0"
