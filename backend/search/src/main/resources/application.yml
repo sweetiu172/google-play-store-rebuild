@@ -1,0 +1,16 @@
+
+server:
+  port: 3002
+  http2:
+    enabled: true
+
+spring:
+  application:
+    name: search-svc
+  threads:
+    virtual:
+      enabled: true
+  data:
+    elasticsearch:
+      repositories:
+        enabled: true
