@@ -3,18 +3,6 @@
 		{
 			"path": ".",
 			"name": "root"
-		},
-		{
-			"path": "flutter",
-			"name": "flutter"
-		},
-		{
-			"path": "playstore-react",
-			"name": "react"
-		},
-		{
-			"path": "golang",
-			"name": "golang"
 		}
 	],
 	"settings": {
