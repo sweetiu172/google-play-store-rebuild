@@ -1,0 +1,17 @@
+services:
+  gp-postgres:
+    image: postgres:16.3-bookworm
+    container_name: gp-postgres
+    ports:
+      - "5555:5432"
+    env_file:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=postgres
+      - POSTGRES_PORT=5555
+    volumes:
+      - gp-postgres-vol:/var/lib/postgresql/data
+      - ./postgres/init.sql:/docker-entrypoint-initdb.d/postgres-init.sql
+
+volumes:
+  gp-postgres-vol:
