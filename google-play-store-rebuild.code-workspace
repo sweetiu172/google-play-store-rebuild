@@ -15,10 +15,6 @@
 		{
 			"path": "golang",
 			"name": "golang"
-		},
-		{
-			"path": "db",
-			"name": "db"
 		}
 	],
 	"settings": {
