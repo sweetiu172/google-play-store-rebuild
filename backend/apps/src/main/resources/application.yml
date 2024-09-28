@@ -10,7 +10,7 @@ spring:
     virtual:
       enabled: true
   datasource:
-    url: jdbc:postgresql://localhost:5555/apps-db
+    url: jdbc:postgresql://localhost:5555/postgres
     username: admin
     password: admin
     driver-class-name: org.postgresql.Driver
