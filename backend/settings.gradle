@@ -1,0 +1,4 @@
+rootProject.name='playstore-backend'
+
+include 'apps'
+include 'search'
