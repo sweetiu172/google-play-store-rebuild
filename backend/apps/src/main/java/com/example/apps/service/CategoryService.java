@@ -1,6 +1,6 @@
 package com.example.apps.service;
 
-import com.example.apps.dto.products.ProductTypeDto;
+import com.example.apps.dto.products.CategoryDto;
 import com.example.apps.model.products.Category;
 import com.example.apps.repository.CategoryRepository;
 import jakarta.transaction.Transactional;
@@ -9,24 +9,29 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class ProductTypeService {
+public class CategoryService {
     private final CategoryRepository productTypeRepository;
 
-    public List<ProductTypeDto.ProductTypeVm> findAll() {
+    public List<CategoryDto.CategoryVm> findAll() {
         var entities = productTypeRepository.findAll();
         return entities.stream()
                 .map(entity ->
-                        new ProductTypeDto.ProductTypeVm(entity.getId(), entity.getName(), entity.getDescription())
+                        new CategoryDto.CategoryVm(entity.getId(), entity.getName(), entity.getDescription())
                 )
                 .toList();
     }
 
+    public List<Category> findByIds(Set<Long> ids) {
+        return productTypeRepository.findAllById(ids);
+    }
+
     @Transactional
-    public void create(ProductTypeDto.CreateProductTypeRequest request) {
+    public void create(CategoryDto.CreateCategoryRequest request) {
         var entity = Category.builder()
                 .name(request.getName())
                 .description(request.getDescription())

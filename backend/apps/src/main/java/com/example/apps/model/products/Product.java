@@ -33,5 +33,5 @@ public class Product extends AbstractAuditEntity {
             joinColumns = @JoinColumn(name = "product_id"),
             inverseJoinColumns = @JoinColumn(name = "category_id")
     )
-    private Set<Category> types;
+    private Set<Category> categories;
 }

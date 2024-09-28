@@ -6,9 +6,7 @@ server:
 
 spring:
   application.name: apps-svc
-  threads:
-    virtual:
-      enabled: true
+  threads.virtual.enabled: true
   datasource:
     url: jdbc:postgresql://localhost:5555/postgres
     username: admin
