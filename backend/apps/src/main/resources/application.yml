@@ -38,7 +38,17 @@ spring:
     hibernate:
       ddl-auto: create-drop
     show-sql: true
-    properties:
-      hibernate.format_sql: true
-      hibernate.generate_statistics: true
+#    properties:
+#      hibernate.format_sql: true
+#      hibernate.generate_statistics: true
+#  liquibase:
+#    enabled: true
+#    change-log: classpath:db/changelog/29-01-changelog.sql
+#    url: jdbc:postgresql://localhost:5555/postgres
+#    user: admin
+#    password: admin
 
+
+springdoc:
+  swagger-ui.path: /swagger/index.html
+  api-docs.path: /swagger/api-docs

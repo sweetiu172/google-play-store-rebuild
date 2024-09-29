@@ -24,7 +24,7 @@ public class Product extends AbstractAuditEntity {
     private String name;
     private String description;
 
-    @OneToMany(mappedBy = "product")
+    @OneToMany(mappedBy = "product", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<ProductImage> images;
 
     @ManyToMany

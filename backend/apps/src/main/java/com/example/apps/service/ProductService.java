@@ -4,13 +4,13 @@ import com.example.apps.dto.products.CategoryDto;
 import com.example.apps.dto.products.ProductDto;
 import com.example.apps.model.products.Product;
 import com.example.apps.model.products.ProductImage;
+import com.example.apps.repository.CategoryRepository;
 import com.example.apps.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,14 +19,15 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class ProductService {
     private final ProductRepository productRepository;
-    private final CategoryService categoryService;
+    private final CategoryRepository categoryRepository;
 
     @Transactional
     public void create(ProductDto.CreateProductRequest request) {
         var entity = Product.builder()
                 .name(request.getName())
                 .description(request.getDescription())
-                .categories(productRepository.getReferenceByIds(request.getCategories()))
+                .categories(categoryRepository.findSetById(request.getCategories()))
+                .images(request.getImageUrls().stream().map(o -> ProductImage.builder().imageUrl(o).build()).toList())
                 .build();
         productRepository.save(entity);
     }

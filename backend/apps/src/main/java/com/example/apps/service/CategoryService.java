@@ -9,7 +9,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Set;
 
 @Slf4j
 @Service
@@ -24,10 +23,6 @@ public class CategoryService {
                         new CategoryDto.CategoryVm(entity.getId(), entity.getName(), entity.getDescription())
                 )
                 .toList();
-    }
-
-    public List<Category> findByIds(Set<Long> ids) {
-        return productTypeRepository.findAllById(ids);
     }
 
     @Transactional
