@@ -26,9 +26,9 @@ public class ProductService {
         var entity = Product.builder()
                 .name(request.getName())
                 .description(request.getDescription())
-                .categories(categoryRepository.findSetById(request.getCategories()))
                 .images(request.getImageUrls().stream().map(o -> ProductImage.builder().imageUrl(o).build()).toList())
                 .build();
+
         productRepository.save(entity);
     }
 
