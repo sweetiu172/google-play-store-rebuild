@@ -1,4 +1,4 @@
-package com.example.apps.service;
+package com.example.apps.service.products;
 
 import com.example.apps.dto.products.CategoryDto;
 import com.example.apps.model.products.Category;
@@ -14,10 +14,10 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class CategoryService {
-    private final CategoryRepository productTypeRepository;
+    private final CategoryRepository categoryRepository;
 
     public List<CategoryDto.CategoryVm> findAll() {
-        var entities = productTypeRepository.findAll();
+        var entities = categoryRepository.findAll();
         return entities.stream()
                 .map(entity ->
                         new CategoryDto.CategoryVm(entity.getId(), entity.getName(), entity.getDescription())
@@ -31,6 +31,10 @@ public class CategoryService {
                 .name(request.getName())
                 .description(request.getDescription())
                 .build();
-        productTypeRepository.save(entity);
+        categoryRepository.save(entity);
+    }
+
+    public List<Category> findByIds(Iterable<Long> ids) {
+        return categoryRepository.findAllById(ids);
     }
 }

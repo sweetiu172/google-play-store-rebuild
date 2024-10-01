@@ -1,6 +1,7 @@
 package com.example.apps.dto.products;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -15,7 +16,6 @@ public class ProductDto {
     public static class CreateProductRequest {
         private String name;
         private String description;
-
         private Set<Long> categories;
         private List<String> imageUrls;
     }
@@ -23,12 +23,13 @@ public class ProductDto {
     @Data
     @NoArgsConstructor
     @AllArgsConstructor
+    @Builder
     public static class ProductVm {
         private Long id;
         private String name;
         private String description;
 
-        private Set<CategoryDto.CategoryVm> categories;
+        private List<ProductCategoryDto.ProductCategoryVm> productCategories;
         private List<String> imageUrls;
     }
 }

@@ -47,6 +47,9 @@ spring:
 #    url: jdbc:postgresql://localhost:5555/postgres
 #    user: admin
 #    password: admin
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+    default-property-inclusion: non_null
 
 
 springdoc:

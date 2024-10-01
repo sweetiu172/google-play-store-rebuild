@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface ProductRepository extends JpaRepository<Product, Long> {
-    @EntityGraph(attributePaths = {"categories", "images"})
-    @Query("select p from Product p")
+    @EntityGraph(attributePaths = {"productCategories", "images", "productCategories.category"})
+    @Query("select p from Product p join p.productCategories pc on  join pc.category c")
     List<Product> findAllIncludeCategoriesAndImages();
 }

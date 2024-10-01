@@ -3,7 +3,7 @@ package com.example.apps.controller.products;
 import com.example.apps.dto.common.Error;
 import com.example.apps.dto.common.ResponseVm;
 import com.example.apps.dto.products.CategoryDto;
-import com.example.apps.service.CategoryService;
+import com.example.apps.service.products.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

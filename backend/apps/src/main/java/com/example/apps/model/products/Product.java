@@ -23,7 +23,7 @@ public class Product extends AbstractAuditEntity {
     private String name;
     private String description;
 
-    @OneToMany(mappedBy = "product", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @OneToMany(mappedBy = "product", cascade = {CascadeType.PERSIST})
     private List<ProductImage> images;
 
     @OneToMany(mappedBy = "product", cascade = {CascadeType.PERSIST})
