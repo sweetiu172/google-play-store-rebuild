@@ -11,6 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashMap;
 import java.util.List;
 
 @Slf4j
@@ -37,26 +38,32 @@ public class ProductService {
     }
 
     public List<ProductDto.ProductVm> findAll() {
-//        var entities = productRepository.findAllIncludeCategoriesAndImages();
-        return productRepository.findAllIncludeCategoriesAndImages()
-                .stream()
+        var products = productRepository.findAllFetchImages();
+        var productsHasCategories = productRepository.findAllFetchProductCategories();
+
+        var productCategoriesMap = new HashMap<Long, List<ProductCategoryDto.ProductCategoryVm>>();
+        for (var productHasCategories : productsHasCategories) {
+            var productCategoriesVm = productHasCategories.getProductCategories().stream()
+                    .map(o -> ProductCategoryDto.ProductCategoryVm.builder()
+                            .id(o.getId())
+                            .category(CategoryDto.CategoryVm.builder()
+                                    .id(o.getCategory().getId())
+                                    .name(o.getCategory().getName())
+                                    .description(o.getCategory().getDescription())
+                                    .build())
+                            .build())
+                    .toList();
+            productCategoriesMap.put(productHasCategories.getId(), productCategoriesVm);
+        }
+
+        return products.stream()
                 .map(o -> ProductDto.ProductVm.builder()
                         .id(o.getId())
                         .name(o.getName())
                         .description(o.getDescription())
-                        .productCategories(o.getProductCategories().stream()
-                                .map(p -> ProductCategoryDto.ProductCategoryVm.builder()
-                                        .id(p.getId())
-                                        .category(CategoryDto.CategoryVm.builder()
-                                                .id(p.getCategory().getId())
-                                                .name(p.getCategory().getName())
-                                                .description(p.getCategory().getDescription())
-                                                .build())
-                                        .build()
-                                ).toList())
+                        .productCategories(productCategoriesMap.get(o.getId()))
                         .imageUrls(o.getImages().stream().map(ProductImage::getImageUrl).toList())
-                        .build()
-                )
+                        .build())
                 .toList();
     }
 

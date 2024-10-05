@@ -22,4 +22,10 @@ public class CategoryDto {
         private String name;
         private String description;
     }
+
+    @Data
+    public static class UpdateRequest {
+        private String name;
+        private String description;
+    }
 }

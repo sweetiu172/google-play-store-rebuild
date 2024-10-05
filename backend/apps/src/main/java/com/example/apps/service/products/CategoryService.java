@@ -34,6 +34,20 @@ public class CategoryService {
         categoryRepository.save(entity);
     }
 
+    @Transactional
+    public void update(Long id, CategoryDto.UpdateRequest request) {
+        var entity = categoryRepository.findById(id).orElseThrow();
+        entity.setName(request.getName());
+        entity.setDescription(request.getDescription());
+        categoryRepository.save(entity);
+    }
+
+    @Transactional
+    public void delete(Long id) {
+        var entity = categoryRepository.findById(id).orElseThrow();
+        categoryRepository.delete(entity);
+    }
+
     public List<Category> findByIds(Iterable<Long> ids) {
         return categoryRepository.findAllById(ids);
     }
